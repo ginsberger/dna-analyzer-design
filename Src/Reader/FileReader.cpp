@@ -1,10 +1,7 @@
 #include <fstream>
 #include "FileReader.h"
 
-FileReader::FileReader(const char* fileName):m_fileName(fileName)
-{
-
-}
+FileReader::FileReader(const char* fileName):m_fileName(fileName){}
 
 
 const char* FileReader::read()const
