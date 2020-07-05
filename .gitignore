@@ -1,5 +1,5 @@
-cmake-build-debug
+.cmake-build-debug
 /.depends
-/.gitignore
 .idea
-DNAANalayzedProject
+.DNAANalayzedProject
+.cmake-build-debug/CMakeFiles
