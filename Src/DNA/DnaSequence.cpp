@@ -97,7 +97,7 @@ bool operator!=(const DnaSequence& dnaSequence1, const DnaSequence& dnaSequence2
 }
 
 
-DnaSequence::Nucleotide& DnaSequence::operator[](size_t index)const
+Nucleotide& DnaSequence::operator[](size_t index)const
 {
     if(index >= m_length)
     {
@@ -231,55 +231,6 @@ DnaSequence::DnaSequence(size_t length)
     m_dnaSequence = new Nucleotide[length];
     m_length = length;
 }
-
-
-
-
-
-
-
-DnaSequence::Nucleotide::Nucleotide(char nucleotide): m_nucleotide(nucleotide){}
-
-
-DnaSequence::Nucleotide DnaSequence::Nucleotide::operator=(Nucleotide nucleotide)
-{
-    if(!isValidNucleotide(nucleotide))
-        throw std::invalid_argument("error: Illegal nucleotide");
-    m_nucleotide = nucleotide.m_nucleotide;
-    return *this;
-}
-
-
-bool DnaSequence::Nucleotide::operator==(const Nucleotide& other)
-{
-    return m_nucleotide == other.m_nucleotide;
-}
-
-
-bool DnaSequence::Nucleotide::operator!=(const Nucleotide& other)
-{
-    return m_nucleotide != other.m_nucleotide;
-}
-
-
-bool DnaSequence::Nucleotide::isValidNucleotide(Nucleotide nucleotide)
-{
-    static std::string validNucleotids = "ACGT";
-    return validNucleotids.find(nucleotide) != std::string::npos;
-}
-
-
-DnaSequence::Nucleotide DnaSequence::Nucleotide::getNucleotidePair()const
-{
-    if(m_nucleotide == 'A')
-        return 'T';
-    if(m_nucleotide == 'T')
-        return 'A';
-    if(m_nucleotide == 'C')
-        return 'G';
-    return 'C';
-}
-
 
 
 
