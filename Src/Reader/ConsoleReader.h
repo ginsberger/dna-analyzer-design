@@ -6,6 +6,7 @@
 #include "IReader.h"
 
 class ConsoleReader : public IReader{
+public:
     /*virtual*/ std::string read()const;
 };
 
