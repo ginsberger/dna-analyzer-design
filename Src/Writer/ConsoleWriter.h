@@ -2,8 +2,9 @@
 #ifndef DNASEQUENCE_CONSOLWRITER_H
 #define DNASEQUENCE_CONSOLWRITER_H
 
+#include "IWriter.h"
 
-class ConsoleWriter {
+class ConsoleWriter: public IWriter {
 public:
     /*virtual*/ void write(const char* data)const ;
 };
