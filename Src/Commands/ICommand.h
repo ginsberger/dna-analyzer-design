@@ -4,6 +4,7 @@
 #define DNASEQUENCE_ICOMMAND_H
 
 #include "../Params/IParams.h"
+#include "../DNA/DNAContainer.h"
 
 class ICommand {
 public:
