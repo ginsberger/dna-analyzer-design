@@ -9,7 +9,7 @@ typedef std::vector<std::string> args;
 
 class Parser {
 public:
-    Parser& operator=(std::string& command);
+    Parser& operator=(std::string& commandLine);
     args getParams()const { return m_argsList;}
 private:
     args m_argsList;
