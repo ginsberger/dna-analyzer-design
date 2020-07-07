@@ -5,15 +5,11 @@
 #ifndef DNASEQUENCE_NEWCOMMAND_H
 #define DNASEQUENCE_NEWCOMMAND_H
 
-#include "../Manager/Parsing.h"
+#include "ICreationCommand.h"
 
-class NewCommand {
+class NewCommand :public ICreationCommand{
 public:
-    NewCommand(const Parsing& params);
-    char* run(const Parsing& params);
-
-private:
-    Parsing m_params;
+    std::string run(const IParams* params);
 };
 
 
