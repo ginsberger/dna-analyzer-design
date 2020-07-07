@@ -5,9 +5,18 @@
 #include "Status.h"
 #include "DnaSequence.h"
 
+
 class DNAMetaData {
 public:
     DNAMetaData(const std::string& name, const IReader& reader);
+
+    std::string getName()const { return m_name;}
+    void setName(const std::string& name){m_name = name;}
+//    operator const DnaSequence&()const { return m_dna;}
+
+    //Status methods
+    std::string getStatus()const { return m_status.getStatus();}
+    void setStatus(EStatus status){m_status.setStatus(status);}
 
     //DNASequence public methods
     DnaSequence& operator=(const DNAMetaData& dnaMetaData) { return m_dna.operator=(dnaMetaData.m_dna);}

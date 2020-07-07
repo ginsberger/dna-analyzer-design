@@ -1,12 +1,23 @@
 
-#include "DNAConteiner.h"
-
-size_t DNAConteiner::m_id=1;
+#include "DNAContainer.h"
 
 
-void DNAConteiner::insert(const std::string& name, const IReader& reader, size_t id)
+void DNAContainer::insert(const DNAMetaData& metaData)
 {
-    m_idMap.insert(std::pair<size_t, DNAMetaData>(id, DNAMetaData(name,reader)));
-    m_nameMap.insert(std::pair<std::string, size_t >(name,id));
+    m_nameMap.insert(std::pair<std::string, size_t >(metaData.getName(),m_id));
+    m_idMap.insert(std::pair<size_t, DNAMetaData>(m_id, metaData)); //Aborted (core dumped)
+    ++m_id;
 }
+
+size_t DNAContainer::getIdByName(std::string name)
+{
+    return m_nameMap[name];
+}
+
+//const DNAMetaData& DNAContainer::getDNAByID(size_t id)
+//{
+//    return m_idMap[id];
+//}
+
+
 

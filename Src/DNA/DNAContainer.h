@@ -1,28 +1,31 @@
 
-#ifndef DNASEQUENCE_DNACONTEINER_H
-#define DNASEQUENCE_DNACONTEINER_H
+#ifndef DNASEQUENCE_DNACONTAINER_H
+#define DNASEQUENCE_DNACONTAINER_H
 
+//#include <hash_map>
 #include <map>
 #include "DNAMetaData.h"
-#include "DNAData.h"
+//#pragma
 
-class DNAConteiner:{
+class DNAContainer{
 public:
-    void insert(const std::string& name, const IReader& reader, size_t id = m_id);
-    static DNAData& getDnaData(){
-        static DNAConteiner dnaHash;
+    void insert(const DNAMetaData& metaData);
+    static DNAContainer& getDnaData(){
+        static DNAContainer dnaHash;
         return dnaHash;
     }
-
+    size_t getIdByName(std::string name);
+//    const DNAMetaData& getDNAByID(size_t id);
 private:
+//    __gnu_cxx::hash_map<size_t, DNAMetaData> m_idMap;
+//    __gnu_cxx::hash_map<std::string, size_t > m_nameMap;
     std::map<size_t, DNAMetaData> m_idMap;
     std::map<std::string, size_t > m_nameMap;
     size_t m_id;
-    DNAConteiner(): m_id(1){}
-    DNAConteiner(const DNAConteiner&){}
-    const DNAConteiner&operator=(const DNAConteiner& )
+    DNAContainer(): m_id(1){}
+    DNAContainer(const DNAContainer&):m_id(1){}
 
 };
 
 
-#endif //DNASEQUENCE_DNACONTEINER_H
+#endif //DNASEQUENCE_DNACONTAINER_H

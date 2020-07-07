@@ -15,7 +15,7 @@ DnaSequence::DnaSequence(const char* dnaSequence):m_length(strlen(dnaSequence))
 
 DnaSequence::DnaSequence(const IReader& reader)
 {
-    initDnaSequence(reader.read());
+    initDnaSequence(reader.read().c_str());
 }
 
 

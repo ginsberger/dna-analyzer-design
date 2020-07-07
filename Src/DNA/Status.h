@@ -2,6 +2,8 @@
 #ifndef DNA_DESIGN_STATUS_H
 #define DNA_DESIGN_STATUS_H
 
+#include <string>
+
 enum EStatus{
     E_New,
     E_Modified,
@@ -12,7 +14,7 @@ class Status {
 
 public:
     Status();
-    const char* getStatus(){ return m_status;}
+    std::string getStatus()const { return m_status;}
     void setStatus(EStatus status);
 
 private:

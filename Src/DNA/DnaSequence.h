@@ -1,6 +1,3 @@
-//
-// Created by a on 6/1/20.
-//
 
 #ifndef DNASEQUENCE_DNASEQUENCE_H
 #define DNASEQUENCE_DNASEQUENCE_H
