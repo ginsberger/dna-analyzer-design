@@ -10,15 +10,13 @@ class IParams {
     typedef std::vector<std::string> args;
 public:
     IParams(const std::string& commandLine);
-//    IParams& operator=(std::string& commandLine);
     args getParams()const { return m_argsList;}
+    void addParam(const std::string& param){m_argsList.push_back(param);}
     virtual bool isValidParams()=0;
+    virtual ~IParams(){}
 private:
     args m_argsList;
 };
-
-
-
 
 
 

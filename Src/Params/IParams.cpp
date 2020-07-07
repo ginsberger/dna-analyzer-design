@@ -16,7 +16,3 @@ IParams::IParams(const std::string &commandLine)
     }
 }
 
-
-//IParams& IParams::operator=(std::string &commandLine) {
-//
-//}
