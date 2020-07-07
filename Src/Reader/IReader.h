@@ -5,7 +5,7 @@
 
 class IReader {
 public:
-    virtual const char* read()const = 0 ;
+    virtual std::string read()const = 0 ;
     virtual ~IReader(){}
 };
 

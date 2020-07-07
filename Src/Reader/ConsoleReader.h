@@ -1,12 +1,13 @@
 
-#ifndef DNASEQUENCE_CONSOLREADER_H
-#define DNASEQUENCE_CONSOLREADER_H
+#ifndef DNASEQUENCE_CONSOLEREADER_H
+#define DNASEQUENCE_CONSOLEREADER_H
 
+#include <string>
 #include "IReader.h"
 
-class ConsolReader :public IReader{
-    /*virtual*/ const char* read()const;
+class ConsoleReader : public IReader{
+    /*virtual*/ std::string read()const;
 };
 
 
-#endif //DNASEQUENCE_CONSOLREADER_H
+#endif //DNASEQUENCE_CONSOLEREADER_H

@@ -4,7 +4,7 @@
 FileReader::FileReader(const char* fileName):m_fileName(fileName){}
 
 
-const char* FileReader::read()const
+std::string FileReader::read()const
 {
     std::ifstream file(m_fileName);
     std::string line;
