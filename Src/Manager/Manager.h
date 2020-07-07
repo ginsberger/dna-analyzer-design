@@ -5,6 +5,7 @@
 #include "../Commands/NewCommand.h"
 
 class Manager {
+public:
     void doAction();
 };
 
