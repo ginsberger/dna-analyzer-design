@@ -12,7 +12,7 @@ public:
 
     std::string getName()const { return m_name;}
     void setName(const std::string& name){m_name = name;}
-//    operator const DnaSequence&()const { return m_dna;}
+    operator const DnaSequence&()const { return m_dna;}
 
     //Status methods
     std::string getStatus()const { return m_status.getStatus();}
@@ -39,3 +39,5 @@ private:
 
 
 #endif //DNASEQUENCE_DNAMETADATA_H
+
+
