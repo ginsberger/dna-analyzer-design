@@ -9,7 +9,7 @@
 class IParams {
     typedef std::vector<std::string> args;
 public:
-    IParams(const std::string& commandLine);
+    void parseCommand(const std::string& commandLine);
     args getParams()const { return m_argsList;}
     void addParam(const std::string& param){m_argsList.push_back(param);}
     virtual bool isValidParams()=0;

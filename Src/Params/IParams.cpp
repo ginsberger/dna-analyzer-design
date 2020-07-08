@@ -2,7 +2,8 @@
 #include "IParams.h"
 #include <sstream>
 
-IParams::IParams(const std::string &commandLine)
+
+void IParams::parseCommand(const std::string& commandLine)
 {
     if(!m_argsList.empty()) {
         m_argsList.clear();
@@ -15,4 +16,5 @@ IParams::IParams(const std::string &commandLine)
         m_argsList.push_back(arg);
     }
 }
+
 
