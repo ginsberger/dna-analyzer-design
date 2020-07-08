@@ -17,6 +17,6 @@ std::string FileReader::read()const
     else{
         throw OpenFileError();
     }
-    return line.c_str();
+    return line;
 }
 
