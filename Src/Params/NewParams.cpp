@@ -4,9 +4,10 @@
 #include "../Exeptions/InValidParams.h"
 
 size_t NewParams::nameCounter = 1;
-
-NewParams::NewParams(const std::string& commandLine):IParams(commandLine)
+//:IParams(commandLine)
+NewParams::NewParams(const std::string& commandLine)
 {
+    IParams::parseCommand(commandLine);
     if(!isValidParams())
     {
         throw InValidParams();
