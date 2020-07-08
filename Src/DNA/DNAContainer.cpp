@@ -2,11 +2,17 @@
 #include "DNAContainer.h"
 
 
-void DNAContainer::insert(const DNAMetaData& metaData)
+void DNAContainer::insert(DNAMetaData* metaData)
 {
-    m_nameMap.insert(std::pair<std::string, size_t >(metaData.getName(),m_id));
-    m_idMap.insert(std::pair<size_t, DNAMetaData>(m_id, metaData)); //Aborted (core dumped)
+    m_nameMap.insert(std::pair<std::string, size_t >(metaData->getName(),m_id));
+    m_idMap.insert(std::pair<size_t, DNAMetaData *>(m_id, metaData)); //Aborted (core dumped)
     ++m_id;
+}
+
+DNAContainer& DNAContainer::getDnaData()
+{
+    static DNAContainer dnaHash;
+    return dnaHash;
 }
 
 size_t DNAContainer::getIdByName(std::string name)

@@ -9,17 +9,15 @@
 
 class DNAContainer{
 public:
-    void insert(const DNAMetaData& metaData);
-    static DNAContainer& getDnaData(){
-        static DNAContainer dnaHash;
-        return dnaHash;
-    }
+    void insert(DNAMetaData* metaData);
+    static DNAContainer& getDnaData();
+
     size_t getIdByName(std::string name);
 //    const DNAMetaData& getDNAByID(size_t id);
 private:
 //    __gnu_cxx::hash_map<size_t, DNAMetaData> m_idMap;
 //    __gnu_cxx::hash_map<std::string, size_t > m_nameMap;
-    std::map<size_t, DNAMetaData> m_idMap;
+    std::map<size_t, DNAMetaData*> m_idMap;
     std::map<std::string, size_t > m_nameMap;
     size_t m_id;
     DNAContainer(): m_id(1){}
