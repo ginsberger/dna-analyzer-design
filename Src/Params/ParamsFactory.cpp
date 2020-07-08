@@ -1,8 +1,9 @@
 
 #include <sstream>
 #include "ParamsFactory.h"
-#include "NewParams.h"
 #include "../Exeptions/InValidCommandName.h"
+#include "NewParams.h"
+#include "LoadParams.h"
 
 IParams* ParamsFactory::createParam(const std::string& commandLine)
 {
@@ -14,5 +15,10 @@ IParams* ParamsFactory::createParam(const std::string& commandLine)
     {
         return new NewParams(commandLine);
     }
+    if(arg =="load")
+    {
+        return new LoadParams(commandLine);
+    }
+
     throw InValidCommandName();
 }
