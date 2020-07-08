@@ -5,7 +5,7 @@
 void DNAContainer::insert(DNAMetaData* metaData)
 {
     m_nameMap.insert(std::pair<std::string, size_t >(metaData->getName(),m_id));
-    m_idMap.insert(std::pair<size_t, DNAMetaData *>(m_id, metaData)); //Aborted (core dumped)
+    m_idMap.insert(std::pair<size_t, DNAMetaData *>(m_id, metaData));
     ++m_id;
 }
 
