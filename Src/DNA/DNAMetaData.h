@@ -13,7 +13,7 @@ public:
     std::string getName()const { return m_name;}
     void setName(const std::string& name){m_name = name;}
     operator const DnaSequence&()const { return m_dna;}
-
+    const DnaSequence& getDNA()const { return m_dna;}
     //Status methods
     std::string getStatus()const { return m_status.getStatus();}
     void setStatus(EStatus status){m_status.setStatus(status);}

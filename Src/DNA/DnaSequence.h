@@ -29,7 +29,7 @@ public:
     std::list<size_t> findAll(const DnaSequence& dnaSubSequence)const;
     std::list<DnaSequence> findConsensusSequences();
     void writeDna(const IWriter& writer)const;
-
+    std::string getDnaSequence()const { return reinterpret_cast<const char *>(m_dnaSequence);}
 protected:
     friend class TestDnaSequence;
     bool isValidDna(const char* dnaSequence)const ;
