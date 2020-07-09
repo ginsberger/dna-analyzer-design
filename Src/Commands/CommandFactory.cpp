@@ -2,6 +2,9 @@
 
 #include "CommandFactory.h"
 #include "NewCommand.h"
+#include "LoadCommand.h"
+#include "DupCommand.h"
+#include "../Exeptions/InValidCommandName.h"
 #include <string.h>
 
 ICommand* CommandFactory::createCommand(const std::string& command)
@@ -10,5 +13,13 @@ ICommand* CommandFactory::createCommand(const std::string& command)
     {
         return new NewCommand;
     }
-    throw std::bad_alloc(); // change to specific error
+    if(command=="load")
+    {
+        return new LoadCommand;
+    }
+    if(command=="dup")
+    {
+        return new DupCommand;
+    }
+    throw InValidCommandName();
 }

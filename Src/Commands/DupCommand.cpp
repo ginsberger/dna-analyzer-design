@@ -1,11 +1,13 @@
 
-#include "NewCommand.h"
+#include "DupCommand.h"
 #include "../Reader/StringReader.h"
 #include <sstream>
+#include "../Reader/FileReader.h"
 
-std::string NewCommand::run(const IParams* params)
+std::string DupCommand::run(const IParams* params)
 {
-    StringReader s(params->getParams()[0]);
+
+    StringReader s(DNAContainer::getDnaData().find(atoi(params->getParams()[0].c_str()))->getDNA().getDnaSequence());
     DNAMetaData dna(params->getParams()[1],s);
     (DNAContainer::getDnaData()).insert(&dna);
 
@@ -13,8 +15,7 @@ std::string NewCommand::run(const IParams* params)
     size_t id = DNAContainer::getDnaData().getIdByName(params->getParams()[1]);
     ss <<"[" << id << "] ";
     ss << params->getParams()[1] << ": "; // name
-    ss << params->getParams()[0]; // dna
+    ss << DNAContainer::getDnaData().find(id)->getDNA().getDnaSequence(); // dna
     return ss.str();
 }
-
 
