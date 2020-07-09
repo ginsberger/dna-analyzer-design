@@ -3,8 +3,6 @@
 #include "NewParams.h"
 #include "../Exeptions/InValidParams.h"
 
-size_t NewParams::nameCounter = 1;
-//:IParams(commandLine)
 NewParams::NewParams(const std::string& commandLine)
 {
     IParams::parseCommand(commandLine);
@@ -16,10 +14,12 @@ NewParams::NewParams(const std::string& commandLine)
 
 bool NewParams::isValidParams()
 {
+    __gnu_cxx::hash_map<std::string, size_t>* nameCounter = getNameCounter();
     if(1 == IParams::getParams().size())
     {
         std::stringstream name;
-        name << "seq" << nameCounter++;
+        name << "seq" << ++(*nameCounter)["seq"];
+        (*nameCounter)[name.str()] = 1; // add the new name to the list
         IParams::addParam(name.str());
         return true;
     }

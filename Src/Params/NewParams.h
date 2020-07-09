@@ -7,9 +7,9 @@
 class NewParams: public IParams {
 public:
     NewParams(const std::string& commandLine);
-    /*virtual*/ bool isValidParams();
-private:
-    static size_t nameCounter;
+
+protected:
+    bool isValidParams();
 };
 
 

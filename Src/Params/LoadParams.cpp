@@ -27,6 +27,7 @@ LoadParams::LoadParams(const std::string& commandLine)
 
 bool LoadParams::isValidParams()
 {
+    __gnu_cxx::hash_map<std::string, size_t>* nameCounter = getNameCounter();
     if(1 < IParams::getParams().size())
     {
         return false;
@@ -39,9 +40,11 @@ bool LoadParams::isValidParams()
         std::stringstream Name;
         Name << name;
         std::cout << name <<std::endl;
-        if(0 != nameCounter[name])
+//        if(0 != nameCounter[name])
+        if(0 != (*nameCounter)[name])
         {
-            Name << ++nameCounter[name];
+            Name << ++(*nameCounter)[name];
+            (*nameCounter)[Name.str()] = 1; // add the new name to the list
         }
 
         IParams::addParam(Name.str());
@@ -53,11 +56,11 @@ bool LoadParams::isValidParams()
         std::string name = IParams::getParams()[1];
         if('@' == name[0])
         {
-            if(0 != nameCounter[name])
+            if(0 != (*nameCounter)[name])
             {
                 std::stringstream newName;
-                newName << name << nameCounter[name];
-                nameCounter[newName.str()] = 1;
+                newName << name << ++(*nameCounter)[name];
+                (*nameCounter)[newName.str()] = 1;// add the new name to the list
                 IParams::getParams()[1] = newName.str();
             }
             return true;
