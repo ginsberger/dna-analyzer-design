@@ -2,6 +2,7 @@
 #include "IParams.h"
 #include <sstream>
 
+IParams::sequenceNameMap IParams::nameCounter;
 
 void IParams::parseCommand(const std::string& commandLine)
 {

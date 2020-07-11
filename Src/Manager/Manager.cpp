@@ -8,7 +8,7 @@
 #include "../Params/ParamsFactory.h"
 #include "../Exeptions/InValidCommandName.h"
 #include "../Exeptions/InValidParams.h"
-
+#include "../Exeptions/OpenFileError.h"
 
 void Manager::doAction()
 {
@@ -18,27 +18,32 @@ void Manager::doAction()
 while (commandLine != "exit")
 {
     std::cout << "> cmd >>> ";
-    commandLine = reader->read();
-    std::stringstream ss(commandLine);
-    std::string commandName;
-    std::getline(ss, commandName, ' ');
+
     try {
+        commandLine = reader->read();
+        std::stringstream ss(commandLine);
+        std::string commandName;
+        std::getline(ss, commandName, ' ');
         ICommand* command = CommandFactory::createCommand(commandName);
         IParams * parser = ParamsFactory::createParam(commandLine);
         std::string output = command->run(parser);
         writer->write(output.c_str());
     }
+    catch (OpenFileError& ex)
+    {
+        std::cout << ex.what() << std::endl;
+    }
     catch (InValidCommandName& ex)
     {
-        std::cout << ex.what();
+        std::cout << ex.what() << std::endl;
     }
     catch (InValidParams& ex)
     {
-        std::cout << ex.what();
+        std::cout << ex.what() << std::endl;
     }
     catch (std::invalid_argument& ex)
     {
-        std::cout << ex.what();
+        std::cout << ex.what() << std::endl;
     }
 }
 

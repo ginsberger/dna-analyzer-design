@@ -4,6 +4,7 @@
 #include "../Exeptions/InValidCommandName.h"
 #include "NewParams.h"
 #include "LoadParams.h"
+#include "DupParams.h"
 
 IParams* ParamsFactory::createParam(const std::string& commandLine)
 {
@@ -19,6 +20,9 @@ IParams* ParamsFactory::createParam(const std::string& commandLine)
     {
         return new LoadParams(commandLine);
     }
-
+    if(arg =="dup")
+    {
+        return new DupParams(commandLine);
+    }
     throw InValidCommandName();
 }

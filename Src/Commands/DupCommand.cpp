@@ -8,8 +8,8 @@ std::string DupCommand::run(const IParams* params)
 {
 
     StringReader s(DNAContainer::getDnaData().find(atoi(params->getParams()[0].c_str()))->getDNA().getDnaSequence());
-    DNAMetaData dna(params->getParams()[1],s);
-    (DNAContainer::getDnaData()).insert(&dna);
+    DNAMetaData* dna = new DNAMetaData(params->getParams()[1],s);
+    (DNAContainer::getDnaData()).insert(dna);
 
     std::stringstream ss;
     size_t id = DNAContainer::getDnaData().getIdByName(params->getParams()[1]);
