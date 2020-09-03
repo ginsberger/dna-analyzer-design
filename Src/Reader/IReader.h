@@ -2,6 +2,7 @@
 #ifndef DNASEQUENCE_IREADER_H
 #define DNASEQUENCE_IREADER_H
 
+#include <iostream>
 
 class IReader {
 public:

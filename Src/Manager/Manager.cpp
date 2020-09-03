@@ -1,11 +1,11 @@
 
 #include <sstream>
 #include "Manager.h"
-#include "../Reader/ConsoleReader.h"
-#include "../Writer/ConsoleWriter.h"
+#include "../Reader/ConsolReader/ConsoleReader.h"
+#include "../Writer/ConsolWriter/ConsoleWriter.h"
 #include "../Writer/IWriter.h"
-#include "../Commands/CommandFactory.h"
-#include "../Params/ParamsFactory.h"
+#include "../CLI/Factory/CommandsFactory/CommandFactory.h"
+#include "../CLI/Factory/ParamsFactory/ParamsFactory.h"
 #include "../Exeptions/InValidCommandName.h"
 #include "../Exeptions/InValidParams.h"
 #include "../Exeptions/OpenFileError.h"

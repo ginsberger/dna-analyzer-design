@@ -1,5 +1,5 @@
-#include "../Writer/FileWriter.h"
-#include "../Reader/FileReader.h"
+#include "../Writer/FileWriter/FileWriter.h"
+#include "../Reader/FileReader/FileReader.h"
 #include "TestDnaSequence.h"
 
 void TestDnaSequence::testConstractors()
