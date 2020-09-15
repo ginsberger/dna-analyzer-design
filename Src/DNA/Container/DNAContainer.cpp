@@ -20,9 +20,16 @@ size_t DNAContainer::getIdByName(std::string name)
     return m_nameMap[name];
 }
 
-const DNAMetaData* DNAContainer::find(size_t _id) const {
-    return m_idMap.find(_id)->second;
+const DNAMetaData* DNAContainer::operator[](size_t _id) {
+//    std::cout << m_idMap.find(_id) << std::endl;
+    return m_idMap[_id];
 }
+
+size_t DNAContainer::operator[](const std::string &name) {
+    return m_nameMap[name];
+}
+
+
 
 
 

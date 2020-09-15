@@ -9,7 +9,7 @@ public:
     LoadParams(const std::string& commandLine);
 
 protected:
-    bool isValidParams();
+    void validetParams();
 
 };
 

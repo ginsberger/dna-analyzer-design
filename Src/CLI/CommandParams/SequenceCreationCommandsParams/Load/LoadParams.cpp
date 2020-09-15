@@ -4,7 +4,10 @@
 
 #include <sstream>
 //#include "NewParams.h"
-#include "../../../../Exeptions/InValidParams.h"
+#include "../../../../Exeptions/InValidParam/InValidIdPrefix.h"
+#include "../../../../Exeptions/InValidParam/TooFewArguments.h"
+#include "../../../../Exeptions/InValidParam/InValidNamePrefix.h"
+
 
 
 LoadParams::LoadParams(const std::string& commandLine)
@@ -18,22 +21,30 @@ LoadParams::LoadParams(const std::string& commandLine)
 //    std::stringstream s;
 //    s << std::getline(ss, arg, ' ') << " " << reader.read();
 //    IParams::parseCommand(s.str());
+    validetParams();
 
-    if(!isValidParams())
-    {
-        throw InValidParams();
-    }
+//    if(!validetParams())
+//    {
+//        throw InValidParams();
+//    }
 }
 
-bool LoadParams::isValidParams()
+void LoadParams::validetParams()
 {
     sequenceNameMap& nameCounter = IParams::getNameCounter();
+
     if(1 < IParams::getParams().size())
     {
-        return false;
+        throw TooFewArguments();
     }
+
     if(1 == IParams::getParams().size()) //without name
     {
+        if(IParams::getParams()[0][0] != '#')
+        {
+            throw InValidIdPrefix();
+        }
+
         std::stringstream filenName(IParams::getParams()[0]);
         std::string name;
         std::getline(filenName, name,'.');
@@ -48,11 +59,20 @@ bool LoadParams::isValidParams()
         }
 
         IParams::addParam(Name.str());
-        return true;
     }
 
     if(2 == IParams::getParams().size()) //with name
     {
+        if(IParams::getParams()[1][0] != '@')
+        {
+            throw InValidNamePrefix();
+        }
+
+        if(IParams::getParams()[0][0] != '#')
+        {
+            throw InValidIdPrefix();
+        }
+
         std::string name = IParams::getParams()[1];
         if('@' == name[0])
         {
@@ -63,8 +83,6 @@ bool LoadParams::isValidParams()
                 nameCounter[newName.str()] = 1;// add the new name to the list
                 IParams::getParams()[1] = newName.str();
             }
-            return true;
         }
     }
-    return false;
 }

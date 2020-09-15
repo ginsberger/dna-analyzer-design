@@ -17,7 +17,7 @@ std::string LoadCommand::run(const IParams* params)
     size_t id = DNAContainer::getDnaData().getIdByName(params->getParams()[1]);
     ss <<"[" << id << "] ";
     ss << params->getParams()[1] << ": "; // name
-    ss << DNAContainer::getDnaData().find(id)->getDNA().getDnaSequence();
+    ss << DNAContainer::getDnaData().operator[](id)->getDNA().getDnaSequence();
 //    ss << reader.read(); // dna
     return ss.str();
 }

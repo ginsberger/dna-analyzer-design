@@ -10,6 +10,7 @@ public:
     {
         return "invalid params";
     }
+
 };
 
 #endif //DNASEQUENCE_INVALIDPARAMS_H
