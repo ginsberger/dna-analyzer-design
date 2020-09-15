@@ -5,6 +5,7 @@
 #include "../../CommandParams/SequenceCreationCommandsParams/New/NewParams.h"
 #include "../../CommandParams/SequenceCreationCommandsParams/Load/LoadParams.h"
 #include "../../CommandParams/SequenceCreationCommandsParams/Dup/DupParams.h"
+#include "../../CommandParams/SequenceManipulationCommandsParams/Slice/SliceParams.h"
 
 IParams* ParamsFactory::createParam(const std::string& commandLine)
 {
@@ -24,5 +25,10 @@ IParams* ParamsFactory::createParam(const std::string& commandLine)
     {
         return new DupParams(commandLine);
     }
+    if(arg == "slice")
+    {
+        return new SliceParams(commandLine);
+    }
+
     throw InValidCommandName();
 }

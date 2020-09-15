@@ -1,14 +1,17 @@
-//
-// Created by a on 9/15/20.
-//
 
-#ifndef DNASEQUENCE_SLICECOMMAND_H
-#define DNASEQUENCE_SLICECOMMAND_H
+#ifndef DNASEQUENCE_SLICEPARAMS_H
+#define DNASEQUENCE_SLICEPARAMS_H
+
+#include "../../IParams.h"
 
 
-class SliceCommand {
+class SliceParams :public IParams{
+public:
+    SliceParams(const std::string& commandLine);
 
+protected:
+    void validetParams();
 };
 
 
-#endif //DNASEQUENCE_SLICECOMMAND_H
+#endif //DNASEQUENCE_SLICEPARAMS_H
