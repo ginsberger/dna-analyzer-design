@@ -31,6 +31,14 @@ void NewParams::validetParams()
             throw InValidNamePrefix();
         }
 
+        IParams::getParams()[1] = IParams::getParams()[1].substr(1); // Extract the name without the @
+        if(nameCounter[IParams::getParams()[1]])
+        {
+            std::stringstream newName;
+            newName << IParams::getParams()[1] << "_"<< nameCounter[IParams::getParams()[1]]++;
+            nameCounter[newName.str()] = 1;// add the new name to the list
+            IParams::getParams()[1] = newName.str();
+        }
     }
 
     if(1 == IParams::getParams().size())

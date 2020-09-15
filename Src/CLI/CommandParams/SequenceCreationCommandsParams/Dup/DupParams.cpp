@@ -15,10 +15,6 @@ DupParams::DupParams(const std::string& commandLine)
     IParams::parseCommand(commandLine);
 
     validetParams();
-//    if(!)
-//    {
-//        throw InValidParams();
-//    }
 }
 
 

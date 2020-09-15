@@ -12,7 +12,7 @@ public:
 
     size_t getIdByName(std::string name);
 //    const DNAMetaData* getDNAByID(size_t id)const ;
-    const DNAMetaData* operator[](size_t _id) ;
+    DNAMetaData* operator[](size_t _id);
     size_t operator[](const std::string &name);
 private:
     __gnu_cxx::hash_map<size_t, DNAMetaData*> m_idMap;

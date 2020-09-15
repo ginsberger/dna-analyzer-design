@@ -30,6 +30,7 @@ public:
     std::list<size_t> findAll(const DNAMetaData& dnaMetaData)const { return m_dna.findAll(dnaMetaData.m_dna);}
     std::list<DnaSequence> findConsensusSequences() { return m_dna.findConsensusSequences();}
     void writeDna(const IWriter& writer)const {m_dna.writeDna(writer);}
+    void setDna(const IReader &reader){m_dna.setDna(reader);}
 
 private:
     DnaSequence m_dna;

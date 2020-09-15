@@ -37,6 +37,7 @@ void DnaSequence::initDnaSequence(const char* dnaSequence)
     if (!isValidDna(dnaSequence) or !*dnaSequence) {
         throw std::invalid_argument("error: Illegal DNA");
     }
+
     Nucleotide* newnucleotide = new Nucleotide[strlen(dnaSequence)];
     for(size_t i=0; i<strlen(dnaSequence);++i)
     {
@@ -232,8 +233,11 @@ DnaSequence::DnaSequence(size_t length)
     m_length = length;
 }
 
-
-
+void DnaSequence::setDna(const IReader &reader)
+{
+    delete[] m_dnaSequence;
+    initDnaSequence(reader.read().c_str());
+}
 
 
 static bool dnaSeqCmp(const DnaSequence &dna1, const DnaSequence &dna2)

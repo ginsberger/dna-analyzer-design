@@ -32,6 +32,8 @@ public:
     std::list<DnaSequence> findConsensusSequences();
     void writeDna(const IWriter& writer)const;
     std::string getDnaSequence()const { return reinterpret_cast<const char *>(m_dnaSequence);}
+    void setDna(const IReader& reader);
+
 protected:
     friend class TestDnaSequence;
     bool isValidDna(const char* dnaSequence)const ;
