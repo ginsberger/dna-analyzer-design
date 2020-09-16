@@ -13,9 +13,10 @@ DnaSequence::DnaSequence(const char* dnaSequence):m_length(strlen(dnaSequence))
     initDnaSequence(dnaSequence);
 }
 
-DnaSequence::DnaSequence(const IReader& reader)
+DnaSequence::DnaSequence(const IReader& reader):m_length(0)
 {
     initDnaSequence(reader.read().c_str());
+    m_length = strlen(reader.read().c_str());
 }
 
 
@@ -38,7 +39,7 @@ void DnaSequence::initDnaSequence(const char* dnaSequence)
         throw std::invalid_argument("error: Illegal DNA");
     }
 
-    Nucleotide* newnucleotide = new Nucleotide[strlen(dnaSequence)];
+    Nucleotide* newnucleotide = new Nucleotide[strlen(dnaSequence) + 1];
     for(size_t i=0; i<strlen(dnaSequence);++i)
     {
         newnucleotide[i] = dnaSequence[i];
@@ -117,8 +118,8 @@ size_t DnaSequence::getLength()const
 
 DnaSequence DnaSequence::slice(size_t start,size_t end)const
 {
-    DnaSequence sliceDna(end - start -1);
-    for(size_t i=start ; i < end-1 ; i++)
+    DnaSequence sliceDna(end - start +1);
+    for(size_t i=start ; i < end+1 ; i++)
     {
         sliceDna[i-start] = m_dnaSequence[i];
     }
@@ -229,7 +230,7 @@ bool DnaSequence::isValidDna(const char* dnaSequence)const
 
 DnaSequence::DnaSequence(size_t length)
 {
-    m_dnaSequence = new Nucleotide[length];
+    m_dnaSequence = new Nucleotide[length + 1];
     m_length = length;
 }
 
@@ -237,6 +238,7 @@ void DnaSequence::setDna(const IReader &reader)
 {
     delete[] m_dnaSequence;
     initDnaSequence(reader.read().c_str());
+    m_length = strlen(reader.read().c_str());
 }
 
 
