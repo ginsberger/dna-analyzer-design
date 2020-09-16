@@ -5,8 +5,9 @@
 #include "../../Commands/SequenceCreationCommands/Load/LoadCommand.h"
 #include "../../Commands/SequenceCreationCommands/Dup/DupCommand.h"
 #include "../../Commands/SequenceManipulationCommands/Slice/SliceCommand.h"
+#include "../../Commands/SequenceManagementCommands/Rename/RenameCommand.h"
 #include "../../../Exeptions/InValidCommandName.h"
-#include <string.h>
+
 
 ICommand* CommandFactory::createCommand(const std::string& command)
 {
@@ -25,6 +26,10 @@ ICommand* CommandFactory::createCommand(const std::string& command)
     if(command == "slice")
     {
         return new SliceCommand;
+    }
+    if(command == "rename")
+    {
+        return new RenameCommand;
     }
 
     throw InValidCommandName();
