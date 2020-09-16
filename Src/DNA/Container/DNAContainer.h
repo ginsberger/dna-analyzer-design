@@ -14,6 +14,8 @@ public:
 //    const DNAMetaData* getDNAByID(size_t id)const ;
     DNAMetaData* operator[](size_t _id);
     size_t operator[](const std::string &name);
+    void setNameMap(const std::string& prevName, const std::string& newName);
+
 private:
     __gnu_cxx::hash_map<size_t, DNAMetaData*> m_idMap;
     __gnu_cxx::hash_map<std::string, size_t > m_nameMap;

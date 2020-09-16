@@ -29,8 +29,8 @@ size_t DNAContainer::operator[](const std::string &name) {
     return m_nameMap[name];
 }
 
-
-
-
-
+void DNAContainer::setNameMap(const std::string &prevName, const std::string &newName) {
+    m_nameMap[newName] = m_nameMap[prevName];
+    m_nameMap.erase(prevName);
+}
 
