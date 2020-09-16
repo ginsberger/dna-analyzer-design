@@ -20,7 +20,9 @@ std::string RenameCommand::run(const IParams *params) {
         dnaMetaData = DNAContainer::getDnaData().operator[](id);
     }
 
+    std::string prevName = dnaMetaData->getName();
     dnaMetaData->setName(params->getParams()[1]);
+    DNAContainer::getDnaData().setNameMap(prevName, dnaMetaData->getName()); // set the hashMap
 
     std::stringstream ss;
     ss <<"[" << id << "] ";
