@@ -35,7 +35,7 @@ void NewParams::validetParams()
         if(nameCounter[IParams::getParams()[1]])
         {
             std::stringstream newName;
-            newName << IParams::getParams()[1] << "_"<< nameCounter[IParams::getParams()[1]]++;
+            newName << IParams::getParams()[1] << "."<< nameCounter[IParams::getParams()[1]]++;
             nameCounter[newName.str()] = 1;// add the new name to the list
             IParams::getParams()[1] = newName.str();
         }

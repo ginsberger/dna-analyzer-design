@@ -1,0 +1,11 @@
+
+#ifndef DNASEQUENCE_RENAMECOMMAND_H
+#define DNASEQUENCE_RENAMECOMMAND_H
+
+
+class RenameCommand {
+
+};
+
+
+#endif //DNASEQUENCE_RENAMECOMMAND_H
