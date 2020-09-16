@@ -2,6 +2,7 @@
 #include "SliceCommand.h"
 #include "../../../../Reader/StringReader/StringReader.h"
 #include <sstream>
+#include <iostream>
 
 
 std::string SliceCommand::run(const IParams *params) {
@@ -23,9 +24,10 @@ std::string SliceCommand::run(const IParams *params) {
 
     size_t start = atoi(params->getParams()[1].c_str());
     size_t end = atoi(params->getParams()[2].c_str());
-    StringReader s(dnaMetaData->getDNA().getDnaSequence().substr(start, end));
+    std::string dna = dnaMetaData->slice(start, end).getDnaSequence();
+
+    StringReader s(dna);
     dnaMetaData->setDna(s);
-//    dnaMetaData->slice(start, end);
 
     std::stringstream ss;
     ss <<"[" << id << "] ";
