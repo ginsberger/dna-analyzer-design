@@ -30,7 +30,6 @@ void RenameParams::validetParams()
 
         bool isId = dnaMetaDataById && IParams::getParams()[0][0] == '#';
         bool isName = id && IParams::getParams()[0][0] == '@';
-
         if (!isId && !isName)
         {
             throw IdOrNameError();
@@ -50,5 +49,9 @@ void RenameParams::validetParams()
         {
             throw NameAlreadyExists();
         }
+        std::string oldName = dnaMetaDataById->getName();
+        IParams::getParams()[1] = IParams::getParams()[1].substr(1); // Extract the name without the @
+        --nameCounter[oldName];
+        ++nameCounter[IParams::getParams()[1]];
     }
 }
