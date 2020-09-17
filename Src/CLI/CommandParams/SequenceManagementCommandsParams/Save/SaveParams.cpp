@@ -20,17 +20,16 @@ void SaveParams::validetParams()
         throw TooFewArguments();
     }
 
-    if(1 == IParams::getParams().size()) // without filename
-    {
-
-        DNAMetaData* dnaMetaDataById = getMetaDataByIdOrName();
-        IParams::addParam(dnaMetaDataById->getName() + ".rawdna");
-    }
-
     if(2 == IParams::getParams().size()) // with filename
     {
         getMetaDataByIdOrName();
-        IParams::getParams()[1] = IParams::getParams()[1] + ".rawdna";
+        IParams::getParams()[1] = IParams::getParams()[1].substr(1) + ".rawdna";
+    }
+
+    if(1 == IParams::getParams().size()) // without filename
+    {
+        DNAMetaData* dnaMetaDataById = getMetaDataByIdOrName();
+        IParams::addParam(dnaMetaDataById->getName() + ".rawdna");
     }
 }
 
@@ -54,5 +53,3 @@ DNAMetaData *SaveParams::getMetaDataByIdOrName() {
 
     return dnaMetaDataById;
 }
-
-
