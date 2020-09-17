@@ -7,6 +7,8 @@
 #include "../../CommandParams/SequenceCreationCommandsParams/Dup/DupParams.h"
 #include "../../CommandParams/SequenceManipulationCommandsParams/Slice/SliceParams.h"
 #include "../../CommandParams/SequenceManagementCommandsParams/Rename/RenameParams.h"
+#include "../../CommandParams/SequenceManagementCommandsParams/Save/SaveParams.h"
+
 
 IParams* ParamsFactory::createParam(const std::string& commandLine)
 {
@@ -33,6 +35,10 @@ IParams* ParamsFactory::createParam(const std::string& commandLine)
     if(arg == "rename")
     {
         return new RenameParams(commandLine);
+    }
+    if(arg == "save")
+    {
+        return new SaveParams(commandLine);
     }
 
     throw InValidCommandName();
