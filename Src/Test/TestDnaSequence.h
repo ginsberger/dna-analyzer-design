@@ -2,7 +2,7 @@
 #ifndef DNASEQUENCE_TESTDNASEQUENCE_H
 #define DNASEQUENCE_TESTDNASEQUENCE_H
 
-#include "../DNA/Sequence/Sequence/DnaSequence.h"
+#include "../Model/Sequence/Sequence/DnaSequence.h"
 
 class TestDnaSequence {
 public:

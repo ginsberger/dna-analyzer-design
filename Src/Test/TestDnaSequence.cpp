@@ -1,11 +1,11 @@
-#include "../Writer/FileWriter/FileWriter.h"
-#include "../Reader/FileReader/FileReader.h"
+#include "../View/Writer/FileWriter/FileWriter.h"
+#include "../View/Reader/FileReader/FileReader.h"
 #include "TestDnaSequence.h"
 
 void TestDnaSequence::testConstractors()
 {
     std::cout << "\n\n\n---------------test DnaSequence Constractors---------------\n";
-    std::cout << "---test create DnaSequence with valid DNA---" << std::endl;
+    std::cout << "---test create DnaSequence with valid Model---" << std::endl;
     try {
         DnaSequence dnaSequence("ACTG");
     }
@@ -23,7 +23,7 @@ void TestDnaSequence::testConstractors()
     }
 
 
-    std::cout << "---test create DnaSequence with invalid DNA---" << std::endl;
+    std::cout << "---test create DnaSequence with invalid Model---" << std::endl;
 
     try{
         DnaSequence dnaSequence("asf");
@@ -122,7 +122,7 @@ void TestDnaSequence::testSubscriptOperator() {
     try {
         DnaSequence dnaSequence("AGCT");
 
-        std::cout << "\n---chack assignment to DNA---" << std::endl;
+        std::cout << "\n---chack assignment to Model---" << std::endl;
 
         std::cout << "\n-assignment valid nucleotide-" << std::endl;
         std::cout << "before assignment: " << dnaSequence << std::endl;

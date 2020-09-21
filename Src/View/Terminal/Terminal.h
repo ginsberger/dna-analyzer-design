@@ -1,0 +1,11 @@
+
+#ifndef DNASEQUENCE_TERMINAL_H
+#define DNASEQUENCE_TERMINAL_H
+
+
+class Terminal {
+
+};
+
+
+#endif //DNASEQUENCE_TERMINAL_H
