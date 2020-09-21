@@ -7,7 +7,14 @@ void Parser::parseCommandLine(const std::string &commandLine) {
     std::stringstream ss(commandLine);
     std::string arg;
 
+    if(!m_parse.empty())
+    {
+        m_parse.clear();
+    }
+    
     while(std::getline(ss, arg, ' ')) {
+        if (arg.empty())
+            continue;
         m_parse.push_back(arg);
     }
 }
