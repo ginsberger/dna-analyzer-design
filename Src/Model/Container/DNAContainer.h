@@ -4,6 +4,7 @@
 
 #include "../../Utils/stringHash.h"
 #include "../MetaData/DNAmetaData/DNAMetaData.h"
+#include "../../Utils/SharedPointer/SharedPtr.h"
 
 class DNAContainer{
 public:
@@ -17,7 +18,7 @@ public:
     void setNameMap(const std::string& prevName, const std::string& newName);
 
 private:
-    __gnu_cxx::hash_map<size_t, DNAMetaData*> m_idMap;
+    __gnu_cxx::hash_map<size_t, SharedPtr<DNAMetaData> > m_idMap;
     __gnu_cxx::hash_map<std::string, size_t > m_nameMap;
     size_t m_id;
     DNAContainer(): m_id(1){}

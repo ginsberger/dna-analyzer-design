@@ -21,8 +21,7 @@ size_t DNAContainer::getIdByName(std::string name)
 }
 
 DNAMetaData* DNAContainer::operator[](size_t _id){
-//    std::cout << m_idMap.find(_id) << std::endl;
-    return m_idMap[_id];
+    return m_idMap[_id].getPtr();
 }
 
 size_t DNAContainer::operator[](const std::string &name) {
