@@ -28,7 +28,7 @@ bool Nucleotide::operator!=(const Nucleotide& other)
 
 bool Nucleotide::isValidNucleotide(Nucleotide nucleotide)
 {
-    static std::string validNucleotids = "ACGT";
+    static std::string validNucleotids = "ACGTactg";
     return validNucleotids.find(nucleotide) != std::string::npos;
 }
 

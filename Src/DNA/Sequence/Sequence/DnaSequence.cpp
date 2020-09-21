@@ -42,7 +42,7 @@ void DnaSequence::initDnaSequence(const char* dnaSequence)
     Nucleotide* newnucleotide = new Nucleotide[strlen(dnaSequence) + 1];
     for(size_t i=0; i<strlen(dnaSequence);++i)
     {
-        newnucleotide[i] = dnaSequence[i];
+        newnucleotide[i] = toupper(dnaSequence[i]);
     }
     m_dnaSequence = newnucleotide;
 }
@@ -224,7 +224,7 @@ void DnaSequence::writeDna(const IWriter& writer)const
 
 bool DnaSequence::isValidDna(const char* dnaSequence)const
 {
-    return strlen(dnaSequence) == strspn( dnaSequence, "ACGT");
+    return strlen(dnaSequence) == strspn( dnaSequence, "ACGTactg");
 }
 
 

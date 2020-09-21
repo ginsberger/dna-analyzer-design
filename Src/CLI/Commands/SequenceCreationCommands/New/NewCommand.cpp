@@ -13,7 +13,7 @@ std::string NewCommand::run(const IParams* params)
     size_t id = DNAContainer::getDnaData().getIdByName(params->getParams()[1]);
     ss <<"[" << id << "] ";
     ss << params->getParams()[1] << ": "; // name
-    ss << params->getParams()[0]; // dna
+    ss << DNAContainer::getDnaData()[id]->getDNA().getDnaSequence(); // dna
     return ss.str();
 }
 
