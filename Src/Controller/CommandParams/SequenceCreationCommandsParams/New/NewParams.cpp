@@ -4,9 +4,8 @@
 #include "../../../Exeptions/InValidParam/InValidNamePrefix.h"
 #include "../../../Exeptions/InValidParam/TooFewArguments.h"
 
-NewParams::NewParams(const std::string& commandLine)
+NewParams::NewParams(const std::vector<std::string>& params): IParams(params)
 {
-    IParams::parseCommand(commandLine);
     validetParams();
 }
 

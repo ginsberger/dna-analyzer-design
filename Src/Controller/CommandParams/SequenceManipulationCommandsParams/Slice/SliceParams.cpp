@@ -7,10 +7,8 @@
 #include "../../../../Model/Container/DNAContainer.h"
 
 
-SliceParams::SliceParams(const std::string& commandLine)
+SliceParams::SliceParams(const std::vector<std::string>& params):IParams(params)
 {
-    IParams::parseCommand(commandLine);
-
     validetParams();
 }
 

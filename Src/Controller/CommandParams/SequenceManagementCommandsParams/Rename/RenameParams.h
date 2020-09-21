@@ -6,7 +6,7 @@
 
 class RenameParams :public IParams{
 public:
-    RenameParams(const std::string& commandLine);
+    RenameParams(const std::vector<std::string>& params);
 
 protected:
     void validetParams();

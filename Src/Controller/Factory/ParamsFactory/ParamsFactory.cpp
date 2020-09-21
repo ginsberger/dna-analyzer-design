@@ -10,35 +10,31 @@
 #include "../../CommandParams/SequenceManagementCommandsParams/Save/SaveParams.h"
 
 
-IParams* ParamsFactory::createParam(const std::string& commandLine)
+IParams* ParamsFactory::createParam(const std::string& commandName, const std::vector<std::string>& params)
 {
-    std::stringstream ss(commandLine);
-    std::string arg;
-    std::getline(ss, arg, ' ');
-
-    if(arg =="new")
+    if(commandName =="new")
     {
-        return new NewParams(commandLine);
+        return new NewParams(params);
     }
-    if(arg =="load")
+    if(commandName =="load")
     {
-        return new LoadParams(commandLine);
+        return new LoadParams(params);
     }
-    if(arg =="dup")
+    if(commandName =="dup")
     {
-        return new DupParams(commandLine);
+        return new DupParams(params);
     }
-    if(arg == "slice")
+    if(commandName == "slice")
     {
-        return new SliceParams(commandLine);
+        return new SliceParams(params);
     }
-    if(arg == "rename")
+    if(commandName == "rename")
     {
-        return new RenameParams(commandLine);
+        return new RenameParams(params);
     }
-    if(arg == "save")
+    if(commandName == "save")
     {
-        return new SaveParams(commandLine);
+        return new SaveParams(params);
     }
 
     throw InValidCommandName();

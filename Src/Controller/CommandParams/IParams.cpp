@@ -18,4 +18,8 @@ void IParams::parseCommand(const std::string& commandLine)
     }
 }
 
+IParams::IParams(const std::vector<std::string> &params) {
+    m_argsList = params;
+}
+
 

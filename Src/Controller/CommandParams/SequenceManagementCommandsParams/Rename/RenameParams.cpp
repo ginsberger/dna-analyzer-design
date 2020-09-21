@@ -7,12 +7,11 @@
 #include "../../../../Model/Container/DNAContainer.h"
 
 
-RenameParams::RenameParams(const std::string& commandLine)
+RenameParams::RenameParams(const std::vector<std::string>& params): IParams(params)
 {
-    IParams::parseCommand(commandLine);
-
     validetParams();
 }
+
 
 void RenameParams::validetParams()
 {

@@ -6,7 +6,7 @@
 
 class LoadParams: public IParams {
 public:
-    LoadParams(const std::string& commandLine);
+    LoadParams(const std::vector<std::string>& params);
 
 protected:
     void validetParams();

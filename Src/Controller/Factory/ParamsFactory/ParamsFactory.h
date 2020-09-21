@@ -7,7 +7,7 @@
 
 class ParamsFactory {
 public:
-    static IParams* createParam(const std::string& commandLine);
+    static IParams* createParam(const std::string& commandName, const std::vector<std::string>& params);
 };
 
 

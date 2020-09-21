@@ -13,6 +13,7 @@ protected:
     typedef __gnu_cxx::hash_map<std::string, size_t> sequenceNameMap;
 
 public:
+    explicit IParams(const std::vector<std::string>& params);
     void parseCommand(const std::string& commandLine);
     args& getParams() { return m_argsList;}
     args getParams() const { return m_argsList;}

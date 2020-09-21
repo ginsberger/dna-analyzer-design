@@ -6,7 +6,7 @@
 
 class NewParams: public IParams {
 public:
-    NewParams(const std::string& commandLine);
+    NewParams(const std::vector<std::string>& params);
 
 protected:
     void validetParams();

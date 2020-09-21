@@ -8,7 +8,7 @@
 
 class SaveParams :public IParams{
 public:
-    SaveParams(const std::string& commandLine);
+    SaveParams(const std::vector<std::string>& params);
 
 protected:
     void validetParams();

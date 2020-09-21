@@ -10,10 +10,8 @@
 #include "../../../../Model/Container/DNAContainer.h"
 
 
-DupParams::DupParams(const std::string& commandLine)
+DupParams::DupParams(const std::vector<std::string>& params):IParams(params)
 {
-    IParams::parseCommand(commandLine);
-
     validetParams();
 }
 

@@ -7,7 +7,7 @@
 
 class DupParams: public IParams {
 public:
-    DupParams(const std::string& commandLine);
+    DupParams(const std::vector<std::string>& params);
 
 protected:
     void validetParams();

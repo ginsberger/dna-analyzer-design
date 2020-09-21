@@ -10,6 +10,9 @@
 #include "../../../Controller/Exeptions/InValidParam/InValidParams.h"
 
 
+static std::vector<std::string> parseCommandLine(const std::string& commandLine);
+
+
 void CLI::run() const{
     IReader* reader = new ConsoleReader;
     IWriter * writer = new ConsoleWriter;
@@ -20,11 +23,9 @@ void CLI::run() const{
 
         try {
             commandLine = reader->read();
-            std::stringstream ss(commandLine);
-            std::string commandName;
-            std::getline(ss, commandName, ' ');
-            ICommand* command = CommandFactory::createCommand(commandName);
-            IParams * parser = ParamsFactory::createParam(commandLine);
+            m_parser->parseCommandLine(commandLine);
+            ICommand* command = CommandFactory::createCommand(m_parser->getName());
+            IParams * parser = ParamsFactory::createParam(m_parser->getName(), m_parser->getParams());
             std::string output = command->run(parser);
             writer->write(output.c_str());
         }
@@ -45,4 +46,20 @@ void CLI::run() const{
             std::cout << ex.what() << std::endl;
         }
     }
+}
+
+
+static std::vector<std::string> parseCommandLine(const std::string& commandLine)
+{
+    std::vector<std::string> parsedVector;
+
+    std::stringstream ss(commandLine);
+    std::string arg;
+    std::getline(ss, arg, ' '); // No need for command name
+
+    while(std::getline(ss, arg, ' ')) {
+        parsedVector.push_back(arg);
+    }
+
+    return parsedVector;
 }

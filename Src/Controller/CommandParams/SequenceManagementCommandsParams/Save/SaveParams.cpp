@@ -5,10 +5,8 @@
 #include "../../../../Model/Container/DNAContainer.h"
 
 
-SaveParams::SaveParams(const std::string& commandLine)
+SaveParams::SaveParams(const std::vector<std::string>& params):IParams(params)
 {
-    IParams::parseCommand(commandLine);
-
     validetParams();
 }
 

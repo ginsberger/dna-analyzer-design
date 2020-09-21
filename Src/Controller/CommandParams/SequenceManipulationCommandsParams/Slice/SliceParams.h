@@ -7,7 +7,7 @@
 
 class SliceParams :public IParams{
 public:
-    SliceParams(const std::string& commandLine);
+    SliceParams(const std::vector<std::string>& params);
 
 protected:
     void validetParams();

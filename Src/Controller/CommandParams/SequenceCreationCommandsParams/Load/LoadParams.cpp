@@ -6,9 +6,8 @@
 #include "../../../Exeptions/InValidParam/InValidNamePrefix.h"
 
 
-LoadParams::LoadParams(const std::string& commandLine)
+LoadParams::LoadParams(const std::vector<std::string>& params):IParams(params)
 {
-    IParams::parseCommand(commandLine);
     validetParams();
 }
 
