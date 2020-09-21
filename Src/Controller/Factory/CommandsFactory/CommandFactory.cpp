@@ -7,6 +7,7 @@
 #include "../../Commands/SequenceManipulationCommands/Slice/SliceCommand.h"
 #include "../../Commands/SequenceManagementCommands/Rename/RenameCommand.h"
 #include "../../Commands/SequenceManagementCommands/Save/SaveCommand.h"
+#include "../../Commands/EmptyCommand/EmptyCommand.h"
 #include "../../Exeptions/InValidCommandName.h"
 
 
@@ -35,6 +36,10 @@ ICommand* CommandFactory::createCommand(const std::string& command)
     if(command == "save")
     {
         return new SaveCommand;
+    }
+    if(command.empty())
+    {
+        return new EmptyCommand;
     }
 
     throw InValidCommandName();

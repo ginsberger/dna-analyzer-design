@@ -11,7 +11,7 @@ void Parser::parseCommandLine(const std::string &commandLine) {
     {
         m_parse.clear();
     }
-    
+
     while(std::getline(ss, arg, ' ')) {
         if (arg.empty())
             continue;
@@ -20,10 +20,14 @@ void Parser::parseCommandLine(const std::string &commandLine) {
 }
 
 std::string Parser::getName() {
+    if(m_parse.empty())
+        return "";
     return m_parse[0];
 }
 
 std::vector<std::string> Parser::getParams() {
+    if(m_parse.empty())
+        return std::vector<std::string>();
     return std::vector<std::string>(m_parse.begin() + 1, m_parse.end());
 }
 
