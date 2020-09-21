@@ -23,6 +23,7 @@ std::string RenameCommand::run(const IParams *params) {
 
     std::string prevName = dnaMetaData->getName();
     dnaMetaData->setName(params->getParams()[1]);
+    dnaMetaData->setStatus(E_Modified);
     DNAContainer::getDnaData().setNameMap(prevName, dnaMetaData->getName()); // set the hashMap
 
     std::stringstream ss;
