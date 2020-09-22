@@ -8,6 +8,7 @@
 #include "../../Commands/SequenceManagementCommands/Rename/RenameCommand.h"
 #include "../../Commands/SequenceManagementCommands/Save/SaveCommand.h"
 #include "../../Commands/ControlCommands/Show/ShowCommand.h"
+#include "../../Commands/SequenceAnalysisCommands/Len/LenCommand.h"
 #include "../../Commands/EmptyCommand/EmptyCommand.h"
 #include "../../Exeptions/InValidCommandName.h"
 
@@ -41,6 +42,10 @@ ICommand* CommandFactory::createCommand(const std::string& command)
     if(command == "show")
     {
         return new ShowCommand;
+    }
+    if(command == "len")
+    {
+        return new LenCommand;
     }
     if(command.empty())
     {
