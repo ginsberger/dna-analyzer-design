@@ -9,7 +9,7 @@
 
 class IParams {
     typedef std::vector<std::string> args;
-protected:
+public:
     typedef __gnu_cxx::hash_map<std::string, size_t> sequenceNameMap;
 
 public:
