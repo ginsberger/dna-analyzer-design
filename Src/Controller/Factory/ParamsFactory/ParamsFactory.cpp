@@ -8,6 +8,7 @@
 #include "../../CommandParams/SequenceManipulationCommandsParams/Slice/SliceParams.h"
 #include "../../CommandParams/SequenceManagementCommandsParams/Rename/RenameParams.h"
 #include "../../CommandParams/SequenceManagementCommandsParams/Save/SaveParams.h"
+#include "../../CommandParams/ControlCommandsParams/Show/ShowParams.h"
 #include "../../CommandParams/EmptyParam/EmptyParam.h"
 
 
@@ -36,6 +37,10 @@ IParams* ParamsFactory::createParam(const std::string& commandName, const std::v
     if(commandName == "save")
     {
         return new SaveParams(params);
+    }
+    if(commandName == "show")
+    {
+        return new ShowParams(params);
     }
     if(commandName.empty())
     {
