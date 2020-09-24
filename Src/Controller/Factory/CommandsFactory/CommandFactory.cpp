@@ -9,6 +9,7 @@
 #include "../../Commands/SequenceManagementCommands/Save/SaveCommand.h"
 #include "../../Commands/ControlCommands/Show/ShowCommand.h"
 #include "../../Commands/SequenceAnalysisCommands/Len/LenCommand.h"
+#include "../../Commands/SequenceAnalysisCommands/Find/FindCommand.h"
 #include "../../Commands/EmptyCommand/EmptyCommand.h"
 #include "../../Exeptions/InValidCommandName.h"
 
@@ -46,6 +47,10 @@ ICommand* CommandFactory::createCommand(const std::string& command)
     if(command == "len")
     {
         return new LenCommand;
+    }
+    if(command == "find")
+    {
+        return new FindCommand;
     }
     if(command.empty())
     {
