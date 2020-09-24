@@ -1,9 +1,9 @@
 TARGET= Src/main
-SOURCES=$(wildcard Src/main.cpp Src/DNA/*.cpp Src/Exeptions/*.cpp Src/Reader/*.cpp Src/Writer/*.cpp Src/Test/*.cpp)
+SOURCES=$(wildcard Src/*.cpp Src/*/*.cpp Src/*/*/*.cpp Src/*/*/*/*.cpp Src/*/*/*/*/*.cpp)
 OBJS=$(SOURCES:.cpp=.o)
 INC_FLAGS=-I../include
 CC=g++
-CFLAGS= -pedantic -Wall -Werror -Wconversion -ansi -g $(INC_FLAGS)
+CFLAGS= -pedantic -Wall -Wconversion -ansi -Wno-deprecated -g $(INC_FLAGS)
 CXXFLAGS=$(CFLAGS)
 LDFLAGS=-g
 .PHONY: clean run gdb
