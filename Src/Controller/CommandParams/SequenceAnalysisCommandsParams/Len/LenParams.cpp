@@ -13,7 +13,7 @@ LenParams::LenParams(const std::vector<std::string> &params) : IParams(params)
 
 void LenParams::validetParams()
 {
-    if(1 > IParams::getParams().size())
+    if(IParams::getParams().empty())
     {
         throw TooFewArguments();
     }
