@@ -12,6 +12,7 @@
 #include "../../CommandParams/SequenceAnalysisCommandsParams/Len/LenParams.h"
 #include "../../CommandParams/SequenceAnalysisCommandsParams/Find/FindParams.h"
 #include "../../CommandParams/SequenceAnalysisCommandsParams/FindAll/FindAllParams.h"
+#include "../../CommandParams/SequenceAnalysisCommandsParams/Count/CountParams.h"
 #include "../../CommandParams/EmptyParam/EmptyParam.h"
 
 
@@ -56,6 +57,10 @@ IParams* ParamsFactory::createParam(const std::string& commandName, const std::v
     if(commandName == "findall")
     {
         return new FindAllParams(params);
+    }
+    if(commandName == "count")
+    {
+        return new CountParams(params);
     }
     if(commandName.empty())
     {
