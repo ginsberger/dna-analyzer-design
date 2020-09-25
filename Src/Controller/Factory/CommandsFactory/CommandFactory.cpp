@@ -10,6 +10,7 @@
 #include "../../Commands/ControlCommands/Show/ShowCommand.h"
 #include "../../Commands/SequenceAnalysisCommands/Len/LenCommand.h"
 #include "../../Commands/SequenceAnalysisCommands/Find/FindCommand.h"
+#include "../../Commands/SequenceAnalysisCommands/FindAll/FindAllCommand.h"
 #include "../../Commands/EmptyCommand/EmptyCommand.h"
 #include "../../Exeptions/InValidCommandName.h"
 
@@ -51,6 +52,10 @@ ICommand* CommandFactory::createCommand(const std::string& command)
     if(command == "find")
     {
         return new FindCommand;
+    }
+    if(command == "findall")
+    {
+        return new FindAllCommand;
     }
     if(command.empty())
     {
