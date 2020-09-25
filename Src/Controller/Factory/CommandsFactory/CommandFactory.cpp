@@ -11,6 +11,7 @@
 #include "../../Commands/SequenceAnalysisCommands/Len/LenCommand.h"
 #include "../../Commands/SequenceAnalysisCommands/Find/FindCommand.h"
 #include "../../Commands/SequenceAnalysisCommands/FindAll/FindAllCommand.h"
+#include "../../Commands/SequenceAnalysisCommands/Count/CountCommand.h"
 #include "../../Commands/EmptyCommand/EmptyCommand.h"
 #include "../../Exeptions/InValidCommandName.h"
 
@@ -56,6 +57,10 @@ ICommand* CommandFactory::createCommand(const std::string& command)
     if(command == "findall")
     {
         return new FindAllCommand;
+    }
+    if(command == "count")
+    {
+        return new CountCommand;
     }
     if(command.empty())
     {
