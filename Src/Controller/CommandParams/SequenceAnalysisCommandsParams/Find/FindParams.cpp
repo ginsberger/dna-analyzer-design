@@ -51,11 +51,11 @@ void FindParams::validetParams()
 
         if (isId2)
         {
-            IParams::getParams()[1] = DNAContainer::getDnaData()[id2]->getDNA().getDnaSequence();
+            IParams::getParams()[1] = dnaMetaData2->getDNA().getDnaSequence();
         }
         if(isName2)
         {
-            IParams::getParams()[1] = dnaMetaData2->getDNA().getDnaSequence();
+            IParams::getParams()[1] = DNAContainer::getDnaData()[id2]->getDNA().getDnaSequence();
         }
         // else the second param is already expressed sub-sequence
     }
