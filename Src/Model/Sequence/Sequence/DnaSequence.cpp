@@ -119,7 +119,7 @@ size_t DnaSequence::getLength()const
 DnaSequence DnaSequence::slice(size_t start,size_t end)const
 {
     DnaSequence sliceDna(end - start +1);
-    for(size_t i=start ; i < end+1 ; i++)
+    for(size_t i=start ; i < end ; i++)
     {
         sliceDna[i-start] = m_dnaSequence[i];
     }
@@ -164,10 +164,12 @@ std::list<size_t> DnaSequence::findAll(const DnaSequence& dnaSubSequence)const
 {
     std::list<size_t> subSequenceIndexes;
     size_t subSequenceIndex = find(dnaSubSequence);
-    while (subSequenceIndex != std::string::npos)
+    size_t i = subSequenceIndex;
+    while (i != std::string::npos)
     {
         subSequenceIndexes.push_back(subSequenceIndex);
-        subSequenceIndex = slice(subSequenceIndex, m_length+1).find(dnaSubSequence);
+        i = slice(subSequenceIndex + 1, m_length).find(dnaSubSequence);
+        subSequenceIndex = subSequenceIndex + 1 + i;
     }
 
     return subSequenceIndexes;
