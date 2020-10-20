@@ -10,9 +10,6 @@
 #include "../../../Controller/Exeptions/InValidParam/InValidParams.h"
 
 
-static std::vector<std::string> parseCommandLine(const std::string& commandLine);
-
-
 void CLI::run() const{
     IReader* reader = new ConsoleReader;
     IWriter * writer = new ConsoleWriter;
@@ -24,9 +21,11 @@ void CLI::run() const{
         try {
             commandLine = reader->read();
             m_parser->parseCommandLine(commandLine);
+            /**/
             ICommand* command = CommandFactory::createCommand(m_parser->getName());
             IParams * parser = ParamsFactory::createParam(m_parser->getName(), m_parser->getParams());
             std::string output = command->run(parser);
+            /*std::string output = callBack(commandName, commandParams)*/
             writer->write(output.c_str());
         }
         catch (OpenFileError& ex)
@@ -48,18 +47,3 @@ void CLI::run() const{
     }
 }
 
-
-static std::vector<std::string> parseCommandLine(const std::string& commandLine)
-{
-    std::vector<std::string> parsedVector;
-
-    std::stringstream ss(commandLine);
-    std::string arg;
-    std::getline(ss, arg, ' '); // No need for command name
-
-    while(std::getline(ss, arg, ' ')) {
-        parsedVector.push_back(arg);
-    }
-
-    return parsedVector;
-}
