@@ -15,7 +15,7 @@ DNAContainer& DNAContainer::getDnaData()
     return dnaHash;
 }
 
-size_t DNAContainer::getIdByName(std::string name)
+size_t DNAContainer::getIdByName(const std::string& name)
 {
     return m_nameMap[name];
 }

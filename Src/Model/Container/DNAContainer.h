@@ -11,7 +11,7 @@ public:
     void insert(DNAMetaData* metaData);
     static DNAContainer& getDnaData();
 
-    size_t getIdByName(std::string name);
+    size_t getIdByName(const std::string& name);
 //    const DNAMetaData* getDNAByID(size_t id)const ;
     DNAMetaData* operator[](size_t _id);
     size_t operator[](const std::string &name);
