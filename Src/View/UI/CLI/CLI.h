@@ -10,7 +10,7 @@
 class CLI : public UI{
 public:
     CLI(): m_parser(SharedPtr<Parser>(new Parser)){}
-    /*virtual*/ void run()const ;
+    /*virtual*/ void run(const CallBack<Manager>& callBack) const;
 
 private:
     SharedPtr<Parser> m_parser;
