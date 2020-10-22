@@ -30,7 +30,7 @@ inline void Manager::doAction()
 }
 
 inline std::string Manager::execCommand(const std::string& commandName, std::vector<std::string> &params) const {
-    ICommand* command = CommandFactory::createCommand(commandName);
+    SharedPtr<ICommand> command = CommandFactory::getCommand(commandName);
     IParams * parser = ParamsFactory::createParam(commandName, params);
     return command->run(parser);
 }

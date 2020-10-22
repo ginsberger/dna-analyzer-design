@@ -4,10 +4,16 @@
 
 #include <string>
 #include "../../Commands/ICommand.h"
+#include <map>
+#include "../../../Utils/SharedPointer/SharedPtr.h"
+
 
 class CommandFactory {
 public:
-    static ICommand* createCommand(const std::string& command);
+    static SharedPtr<ICommand> getCommand(const std::string &command);
+private:
+    static std::map<std::string, SharedPtr<ICommand> > m_commandsMap;
+    static std::map<std::string, SharedPtr<ICommand>> init();
 };
 
 

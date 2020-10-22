@@ -16,56 +16,38 @@
 #include "../../Exeptions/InValidCommandName.h"
 
 
-ICommand* CommandFactory::createCommand(const std::string& command)
+std::map<std::string, SharedPtr<ICommand> > CommandFactory::init()
 {
-    if(command=="new")
-    {
-        return new NewCommand;
-    }
-    if(command=="load")
-    {
-        return new LoadCommand;
-    }
-    if(command=="dup")
-    {
-        return new DupCommand;
-    }
-    if(command == "slice")
-    {
-        return new SliceCommand;
-    }
-    if(command == "rename")
-    {
-        return new RenameCommand;
-    }
-    if(command == "save")
-    {
-        return new SaveCommand;
-    }
-    if(command == "show")
-    {
-        return new ShowCommand;
-    }
-    if(command == "len")
-    {
-        return new LenCommand;
-    }
-    if(command == "find")
-    {
-        return new FindCommand;
-    }
-    if(command == "findall")
-    {
-        return new FindAllCommand;
-    }
-    if(command == "count")
-    {
-        return new CountCommand;
-    }
-    if(command.empty())
-    {
-        return new EmptyCommand;
-    }
-
-    throw InValidCommandName();
+    std::map<std::string, SharedPtr<ICommand> > tmp;
+    tmp["new"] = SharedPtr<ICommand>(new NewCommand);
+    tmp["load"] = SharedPtr<ICommand>(new LoadCommand());
+    tmp["dup"] = SharedPtr<ICommand>(new DupCommand());
+    tmp["slice"] = SharedPtr<ICommand>(new SliceCommand());
+    tmp["rename"] = SharedPtr<ICommand>(new RenameCommand());
+    tmp["save"] = SharedPtr<ICommand>(new SaveCommand());
+    tmp["show"] = SharedPtr<ICommand>(new ShowCommand());
+    tmp["len"] = SharedPtr<ICommand>(new LenCommand());
+    tmp["find"] = SharedPtr<ICommand>(new FindCommand());
+    tmp["findall"] = SharedPtr<ICommand>(new FindAllCommand());
+    tmp["count"] = SharedPtr<ICommand>(new CountCommand());
+    tmp["show"] = SharedPtr<ICommand>(new ShowCommand());
+    tmp[""] = SharedPtr<ICommand>(new EmptyCommand());
+    tmp["show"] = SharedPtr<ICommand>(new ShowCommand());
+    return tmp;
 }
+
+std::map<std::string, SharedPtr<ICommand>> CommandFactory::m_commandsMap = CommandFactory::init();
+
+SharedPtr<ICommand> CommandFactory::getCommand(const std::string &command)
+{
+    try {
+        return m_commandsMap[command];
+    }
+    catch(const std::exception& e)
+    {
+        throw InValidCommandName();
+    }
+}
+
+
+
