@@ -14,20 +14,20 @@ public:
 template <typename T>
 class CallBack : public CallBackBase{
 public:
-    typedef std::string (T::*F) (const std::string&, std::vector<std::string>&) const;
-    CallBack(T & t, F f) : m_t(&t), m_f(f) {}
-    std::string operator()(const std::string& string, std::vector<std::string>& vector) const {return (m_t->*m_f)(string, vector);}
+    typedef std::string (T::*MemFuncP) (const std::string&, std::vector<std::string>&) const;
+    CallBack(T & instance, MemFuncP instanceMemberFunc) : m_instance(instance), m_instanceMemberFunc(instanceMemberFunc) {}
+    std::string operator()(const std::string& string, std::vector<std::string>& vector) const {return (m_instance.*m_instanceMemberFunc)(string, vector);}
 
 private:
-    T* m_t;
-    F m_f;
+    T& m_instance;
+    const MemFuncP m_instanceMemberFunc;
 };
 
-
+//the first argument 'instance' is not const to enable call non const functions
 template <typename T>
-inline CallBack<T> makeCallBack(T& t, typename CallBack<T>::F f)
+inline CallBack<T> makeCallBack(T& instance, typename CallBack<T>::MemFuncP instanceMemberFunc)
 {
-    return CallBack<T>(t, f);
+    return CallBack<T>(instance, instanceMemberFunc);
 }
 
 #endif //DNA_ANALYZER_DESIGN_CALLBACK_H
